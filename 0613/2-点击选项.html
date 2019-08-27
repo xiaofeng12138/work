@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset = "UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xiao Feng</title>
+    <style>
+        *{margin:0;padding:0}
+         li{list-style:none}
+         li{
+             width: 200px;
+             height: 50px;
+             background-color: pink;
+             margin: 10px;
+             text-align: center;
+         }
+         a{
+             font-size: 30px;
+             text-decoration: none;
+             color: red
+         }
+         .active{
+             background-color: blue;
+         }
+         
+    </style>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+    </div>
+    <script>
+     let a = document.getElementsByTagName('li')
+     //console.log(a)
+     //var num = 0
+     a[0].className = 'active'
+
+     for(let i = 0;i<a.length;i++){
+        a[i].index = i;
+        a[i].onclick = function(){
+         // num = this.index;
+         // console.log(num)
+         for(let j = 0 ;j<a.length;j++){
+           a[j].className = ''
+         }
+         a[i].className = 'active'
+        }
+     }
+   </script>
+</body>
+</html>

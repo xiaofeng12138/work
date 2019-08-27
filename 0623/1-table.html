@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset = "UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xiao Feng</title>
+    <style>
+        *{margin:0;padding:0}
+         li{list-style:none}
+    </style>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+    <div class="editor">
+        <h1 class="header">
+            <button onclick='back()'>返回</button>
+            进博会巡馆记录表
+        </h1>
+        <div class='guanhao'>
+            <b>展馆号：
+                <span class="site-Num"></span>
+            </b>
+    
+            <b>展台号：
+                <span class="siteName"></span>
+            </b>
+    
+        </div>
+        <div class='text'>
+            <div>
+                <span>巡馆人员：</span>
+                <input type='text' placeholder="请输入巡馆人员" record='RECODE_USER' />
+            </div>
+            <div>
+                <span>巡馆日期：</span>
+                <input type='text' record='RECODE_TIME' disabled placeholder="格式如：2018-11-05" onblur="validate(this)" />
+            </div>
+    
+    
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th rowspan="2">
+                        核查内容
+                    </th>
+                    <th colspan="2">
+                        核查情况记录
+                    </th>
+                </tr>
+                <tr>
+    
+                    <th>
+                        是否存在问题
+                    </th>
+                    <th>
+                        问题记录
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="cruise aabb">
+                <tr>
+                    <td>（一）是否有擅自移出展馆情况。</td>
+                    <td class="radioGroup">
+                        <div>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="a" value='0'>
+                                <span></span>是
+                            </label>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' checked='checked' type="radio" name="a" value='1'>
+                                <span></span>否
+                            </label>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="a" value='2'>
+                                <span></span>不涉及
+                            </label>
+    
+                        </div>
+    
+                    </td>
+                    <td>
+                        <input type="text" record-data='PROBLEM_RECODE'>
+                    </td>
+                </tr>
+                <tr>
+                    <td>（二）是否有违规销售情况。</td>
+                    <td class="radioGroup">
+                        <div>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="b" value='0'>
+                                <span></span>是
+                            </label>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' checked='checked' type="radio" name="b" value='1'>
+                                <span></span>否
+                            </label>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="b" value='2'>
+                                <span></span>不涉及
+                            </label>
+                        </div>
+    
+                    </td>
+                    <td>
+                        <input type="text" record-data='PROBLEM_RECODE'>
+                    </td>
+                </tr>
+    
+                <tr>
+                    <td>（三）是否有未经批准的试用。</td>
+    
+                    <td class="radioGroup">
+                        <div>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="d" value='0'>
+                                <span></span>是
+                            </label>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' checked='checked' type="radio" name="d" value='1'>
+                                <span></span>否
+                            </label>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="d" value='2'>
+                                <span></span>不涉及
+                            </label>
+    
+                        </div>
+    
+                    </td>
+                    <td>
+                        <input type="text" record-data='PROBLEM_RECODE'>
+                    </td>
+                </tr>
+                <tr>
+                    <td>（四）是否有未经批准的品尝。</td>
+                    <td class="radioGroup">
+                        <div>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="e" value='0'>
+                                <span></span>是
+                            </label>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' checked='checked' type="radio" name="e" value='1'>
+                                <span></span>否
+                            </label>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="e" value='2'>
+                                <span></span>不涉及
+                            </label>
+    
+    
+                        </div>
+    
+                    </td>
+                    <td>
+                        <input type="text" record-data='PROBLEM_RECODE'>
+                    </td>
+                </tr>
+    
+                <tr>
+                    <td>（五）用于试用、品尝、散发的预包装食品和化妆品，是否未作出统一标识。</td>
+                    <td class="radioGroup">
+                        <div>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="g" value='0'>
+                                <span></span>是
+                            </label>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' checked='checked' type="radio" name="g" value='1'>
+                                <span></span>否
+                            </label>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="g" value='2'>
+                                <span></span>不涉及
+                            </label>
+    
+                        </div>
+    
+                    </td>
+                    <td>
+                        <input type="text" record-data='PROBLEM_RECODE'>
+                    </td>
+                </tr>
+    
+                <tr>
+    
+                    <td>（六）是否有足够数量的密闭收集箱（内置密封袋），并张贴“废弃物收集箱”标识。 </td>
+    
+                    <td class="radioGroup">
+                        <div>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="k" value='0'>
+                                <span></span>是
+                            </label>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' checked='checked' type="radio" name="k" value='1'>
+                                <span></span>否
+                            </label>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="k" value='2'>
+                                <span></span>不涉及
+                            </label>
+    
+                        </div>
+    
+                    </td>
+                    <td>
+                        <input type="text" record-data='PROBLEM_RECODE'>
+                    </td>
+                </tr>
+                <tr>
+    
+                    <td>（七）是否未做好废弃物收集记录。</td>
+    
+                    <td class="radioGroup">
+                        <div>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="m" value='0'>
+                                <span></span>是
+                            </label>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' checked='checked' type="radio" name="m" value='1'>
+                                <span></span>否
+                            </label>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="m" value='2'>
+                                <span></span>不涉及
+                            </label>
+    
+                        </div>
+    
+                    </td>
+                    <td>
+                        <input type="text" record-data='PROBLEM_RECODE'>
+                    </td>
+                </tr>
+    
+                <tr>
+    
+                    <td>
+                        <span>（八）是否存在涉及危险化学品风险。</span>
+                    </td>
+    
+                    <td class="radioGroup">
+                        <div>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="x" value='0'>
+                                <span></span>是
+                            </label>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' checked='checked' type="radio" name="x" value='1'>
+                                <span></span>否
+                            </label>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="x" value='2'>
+                                <span></span>不涉及
+                            </label>
+                        </div>
+                    </td>
+                    <td>
+                        <input type="text" record-data='PROBLEM_RECODE'>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table>
+            <div>
+                <button class='submit'>提交</button>
+            </div>
+            <thead>
+                <tr>
+                    <th rowspan="2">
+                        重点展位核查内容
+                    </th>
+                    <th colspan="2">
+                        核查情况记录
+                    </th>
+                </tr>
+                <tr>
+    
+                    <th>
+                        是否存在问题
+                    </th>
+                    <th>
+                        问题记录
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="cruise bbcc">
+                <tr>
+                    <td>（九）是否有禁止、限制清单的物品。</td>
+                    <td class="radioGroup">
+                        <div>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="c" value='0'>
+                                <span></span>是
+                            </label>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="c" value='1'>
+                                <span></span>否
+                            </label>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="c" value='2'>
+                                <span></span>不涉及
+                            </label>
+    
+    
+                        </div>
+    
+                    </td>
+                    <td>
+                        <input type="text" record-data='PROBLEM_RECODE'>
+                    </td>
+                </tr>
+                <tr>
+                    <td>（十）是否有未经批准的馈赠。</td>
+                    <td class="radioGroup">
+                        <div>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="f" value='0'>
+                                <span></span>是
+                            </label>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="f" value='1'>
+                                <span></span>否
+                            </label>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="f" value='2'>
+                                <span></span>不涉及
+                            </label>
+    
+                        </div>
+    
+                    </td>
+                    <td>
+                        <input type="text" record-data='PROBLEM_RECODE'>
+                    </td>
+                </tr>
+                <tr>
+                    <td>（十一）是否未以中文注明品名、保质期等事项。</td>
+                    <td class="radioGroup">
+                        <div>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="h" value='0'>
+                                <span></span>是
+                            </label>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="h" value='1'>
+                                <span></span>否
+                            </label>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="h" value='2'>
+                                <span></span>不涉及
+                            </label>
+    
+                        </div>
+    
+                    </td>
+                    <td>
+                        <input type="text" record-data='PROBLEM_RECODE'>
+                    </td>
+                </tr>
+    
+                <tr>
+    
+                    <td>（十二）是否对展品未进行日核销，并做好记录。 </td>
+                    <td class="radioGroup">
+                        <div>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="j" value='0'>
+                                <span></span>是
+                            </label>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="j" value='1'>
+                                <span></span>否
+                            </label>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="j" value='2'>
+                                <span></span>不涉及
+                            </label>
+    
+                        </div>
+    
+                    </td>
+                    <td>
+                        <input type="text" record-data='PROBLEM_RECODE'>
+                    </td>
+                </tr>
+                <tr>
+    
+                    <td>（十三）是否未做好日常消毒防疫工作。</td>
+    
+                    <td class="radioGroup">
+                        <div>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="n" value='0'>
+                                <span></span>是
+                            </label>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="n" value='1'>
+                                <span></span>否
+                            </label>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="n" value='2'>
+                                <span></span>不涉及
+                            </label>
+    
+                        </div>
+    
+                    </td>
+                    <td>
+                        <input type="text" record-data='PROBLEM_RECODE'>
+                    </td>
+                </tr>
+    
+    
+    
+                <tr>
+    
+                    <td>（十四）出入境特殊物品包装是否有破损、渗漏现象。</td>
+    
+                    <td class="radioGroup">
+                        <div>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="r" value='0'>
+                                <span></span>是
+                            </label>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="r" value='1'>
+                                <span></span>否
+                            </label>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="r" value='2'>
+                                <span></span>不涉及
+                            </label>
+    
+    
+                        </div>
+    
+                    </td>
+                    <td>
+                        <input type="text" record-data='PROBLEM_RECODE'>
+                    </td>
+                </tr>
+                <tr>
+    
+                    <td>（十五）参展期入境特殊物品包装是否未有符合相关要求的生物危险品标识。</td>
+    
+                    <td class="radioGroup">
+                        <div>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="s" value='0'>
+                                <span></span>是
+                            </label>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="s" value='1'>
+                                <span></span>否
+                            </label>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="s" value='2'>
+                                <span></span>不涉及
+                            </label>
+    
+                        </div>
+    
+                    </td>
+                    <td>
+                        <input type="text" record-data='PROBLEM_RECODE'>
+                    </td>
+                </tr>
+                <tr>
+    
+                    <td>（十六）等级为A、B级的特殊物品，是否未具备相关生物安全控制条件。 </td>
+    
+                    <td class="radioGroup">
+                        <div>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="t" value='0'>
+                                <span></span>是
+                            </label>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="t" value='1'>
+                                <span></span>否
+                            </label>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="t" value='2'>
+                                <span></span>不涉及
+                            </label>
+    
+                        </div>
+    
+                    </td>
+                    <td>
+                        <input type="text" record-data='PROBLEM_RECODE'>
+                    </td>
+                </tr>
+    
+                <tr>
+    
+                    <td>（十七）动植物及其产品，是否未符合《中国国际进口博览会动植物及其产品监管方案》规定。 </td>
+    
+                    <td class="radioGroup">
+                        <div>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="v" value='0'>
+                                <span></span>是
+                            </label>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="v" value='1'>
+                                <span></span>否
+                            </label>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="v" value='2'>
+                                <span></span>不涉及
+                            </label>
+    
+                        </div>
+    
+                    </td>
+                    <td>
+                        <input type="text" record-data='PROBLEM_RECODE'>
+                    </td>
+                </tr>
+                <tr>
+    
+                    <td>（十八）未获检疫准入的食品，是否未与其它产品相对隔离。 </td>
+    
+                    <td class="radioGroup">
+                        <div>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="w" value='0'>
+                                <span></span>是
+                            </label>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="w" value='1'>
+                                <span></span>否
+                            </label>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="w" value='2'>
+                                <span></span>不涉及
+                            </label>
+    
+                        </div>
+    
+                    </td>
+                    <td>
+                        <input type="text" record-data='PROBLEM_RECODE'>
+                    </td>
+                </tr>
+                <tr>
+    
+                    <td>（十九）是否发现未预见特殊情况。
+                    </td>
+    
+                    <td class="radioGroup">
+                        <div>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="y" value='0'>
+                                <span></span>是
+                            </label>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="y" value='1'>
+                                <span></span>否
+                            </label>
+                            <label class='radio'>
+                                <input record-data='IS_PRRBLEM' type="radio" name="y" value='2'>
+                                <span></span>不涉及
+                            </label>
+    
+                        </div>
+    
+                    </td>
+                    <td>
+                        <input type="text" record-data='PROBLEM_RECODE'>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+                <button class='submit'>提交</button>
+                </div>
+    <script></script>
+</body>
+</html>

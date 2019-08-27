@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>父子组件通讯</title>
+</head>
+<body>
+    <div id="app">
+        <h2>{{ msg }}</h2>
+        <son :a='msg' />
+    </div>
+
+<template id="son">
+
+    <div>
+        <h2>我是子组件 根组件先创建完 在执行子组件 {{a}} </h2>
+    <div>
+</template>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+    let son = {
+       template:'#son',
+       props: ['a'],
+      data(){
+          return {
+              b:2,
+          }
+       }
+    }
+   
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            msg: '父子组件传值',
+
+        },
+        //组件注册
+        components: {
+            son
+        }
+    })
+      console.log(vm)
+
+</script>
+</html>

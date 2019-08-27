@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset = "UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xiao Feng</title>
+    <style>
+        *{margin:0;padding:0}
+         li{list-style:none}
+    </style>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+    let el = document.querySelector('#app')
+ 
+    function fn(){
+        let date = new Date()
+       el.innerHTML = date.toLocaleString()
+    }
+    fn();
+    setInterval(fn, 1000);
+   //console.log(date.toLocaleString())
+    </script>
+</body>
+</html>

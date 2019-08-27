@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset = "UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xiao Feng</title>
+    <style>
+        *{margin:0;padding:0}
+         li{list-style:none}
+    </style>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+
+    <table border="1" class="innerTable1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Item Name</th>
+                <th>Item Price</th>
+            </tr>
+        </thead>
+    
+        <tbody>
+            <tr>
+                <td>Alvin</td>
+                <td>Eclair</td>
+                <td>$0.87</td>
+            </tr>
+            <tr>
+                <td>Alan</td>
+                <td>Jellybean</td>
+                <td>$3.76</td>
+            </tr>
+            <tr>
+                <td>Jonathan</td>
+                <td>Lollipop</td>
+                <td>$7.00</td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        let arr =[];
+       $("table tr").each(function (i) {
+            $(this).children("td").each(function (i) {
+               // alert("第" + i + "个td的内容：" + $(this).text());
+                arr.push($(this).text())
+            });
+        });
+        console.log(arr)
+    </script>
+</body>
+</html>

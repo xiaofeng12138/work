@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset = "UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xiao Feng</title>
+    <style>
+        *{margin:0;padding:0}
+         li{list-style:none}
+    </style>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+    <a href="">假装这里面是一些很正经的文字</a>
+    <script>
+     function download(filename, text) {
+       var element = document.createElement('a');
+           element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+           element.setAttribute('download', filename);
+            element.style.display = 'none';
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+    }
+    download('1','你是谁')
+    </script>
+</body>
+</html>
