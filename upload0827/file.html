@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <title>文件上传</title>
+</head>
+<body>
+    <!-- <form action="http://localhost:3000/upload" method="post" enctype="multipart/form-data">
+        <input type="file" id="file" name="xiaofeng">
+        <button>提交</button>
+    </form>
+    <img src="" alt=""> -->
+
+
+      <input type="file" id="file" name="">
+      <button onclick="upload()"> 提交</button>
+      <img src="" alt="">
+
+   
+</body>
+<script>
+ function upload(){
+     let file = $('#file').get(0).files[0]
+
+     let formdata = new FormData();
+     formdata.append('xiaofeng',file)
+     console.log(file)
+    //$('img').attr('src','locall')
+    $.ajax({
+        url:'http://localhost:3000/upload',
+        method:'post',
+        cache:false, //不必填
+        data:formdata,
+        processData:false, //必填
+        contentType:false,//必填
+        success:(res)=>{
+            console.log(res)
+        if(res.err == '0'){
+          $('img').attr('src',res.path)
+        }else{
+            alert('上传失败，请重试')
+        }
+       }
+    })
+ }
+</script>
+</html>
